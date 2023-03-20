@@ -1,0 +1,27 @@
+.gallery-filter {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.gallery-filter-button {
+    color: #1D6154;
+    font-size: 16px;
+    font-family: 'Syne';
+    font-weight: 700px;
+    background-color: white;
+    border-color: #1D6154;
+    border-radius: 60px;
+    border-width: 1px;
+}
+
+.gallery-filter-button1 {
+    padding: 9px 30px;
+}
+
+.gallery-filter-button2 {
+    padding: 9px;
+}
+
+
