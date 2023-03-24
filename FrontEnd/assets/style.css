@@ -84,6 +84,12 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
+p {
+	font-family: 'Work sans';
+	font-weight: 400;
+	color: #3D3D3D;
+	font-size: 14px;
+}
 nav ul {
 	display: flex;
 	align-items: center;
