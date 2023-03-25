@@ -28,7 +28,7 @@ main {
 	flex-direction: column;
 }
 
-#login input[type="text"], #login input[type="submit"] {
+#login input[type="text"], #login input[type="email"], #login input[type="password"], #login input[type="submit"] {
 	height: 50px;
 	font-size: 14px;
 	border: none;

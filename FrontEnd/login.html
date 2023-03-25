@@ -30,13 +30,13 @@
 		<section id="login">
 			<h2>Log In</h2>
 
-			<form action="#" method="post" id="login-form">
+			<form action="#" method="POST" id="login-form">
 				<label for="email">E-mail</label>
-				<input type="text" name="email" id="email">
+				<input type="email" name="email" id="email">
 				<label for="password">Mot de passe</label>
-				<input type="text" name="password" id="password">
-				<input type="submit" value="Se connecter">
-				<input type="button" value="Mot de passe oublié">
+				<input type="password" name="password" id="password">
+				<input type="submit" value="Se connecter" id="connection">
+				<input type="button" value="Mot de passe oublié" id="resetPassword">
 			</form>
 
 		</section>
@@ -50,6 +50,8 @@
 			</ul>
 		</nav>
 	</footer>
+
+	<script type="module" src="./assets/login.js"></script>
 
 </body>
 </html>
