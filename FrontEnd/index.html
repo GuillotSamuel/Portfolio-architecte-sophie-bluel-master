@@ -10,8 +10,18 @@
 		<meta name="description" content="">
 		<link rel="stylesheet" href="./assets/style.css">
 		<link rel="stylesheet" href="./assets/style-index.css">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
 	</head>
 <body>
+
+	<div id="edition-mode"></div>
+
+	<div class="overlay"></div>
+
+	<div class="modal">
+		
+	</div>
+
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 		<nav>
@@ -37,7 +47,7 @@
 		</section>
 
 		<section id="portfolio">
-			<h2>Mes Projets</h2>
+			<h2 class="portfolio-title">Mes Projets</h2>
 			<div class="gallery-filter">
 				<button id="tous-button" class="gallery-filter-button gallery-filter-button1">Tous</button>
 				<button id="objets-button" class="gallery-filter-button gallery-filter-button1">Objets</button>
@@ -71,6 +81,8 @@
 		</nav>
 	</footer>
 
-	<script src="./assets/gallery.js"></script>
+	<script type="module" src="./assets/gallery.js"></script>
+
+
 </body>
 </html>

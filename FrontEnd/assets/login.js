@@ -42,3 +42,4 @@ loginForm.addEventListener("submit", async function(event) {
         alert("Failed to log in. Please check your email and password and try again.");
     });
 });
+

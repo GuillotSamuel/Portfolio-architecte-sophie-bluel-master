@@ -1,3 +1,78 @@
+/* Edition Mode upper bar */
+
+#edition-mode {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    gap: 21px;
+    padding: 10px;
+}
+
+.mode-edition-container {
+    display: flex;
+    gap: 9px;
+    align-items: center;
+}
+
+.mode-edition-title {
+    color: #FFFFFF;
+}
+
+.change-publishing-button {
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 60px;
+    background-color: white;
+    padding: 11px 23px;
+}
+
+
+/* Modal / Overlay */
+
+/* Overlay */
+
+.overlay {
+    position: fixed;
+    top: 58px;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+/* Modal */
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 630px;
+    height: 731px;
+    background-color: white;
+    border-radius: 10px;
+    display: none;
+}
+
+
+/* Portfolio / Gallery */
+
+#portfolio {
+    display: flex;
+    flex-direction: column;
+    gap: 51px;
+}
+
+.portfolio-title {
+    margin-bottom: 0em;
+}
+
 .gallery-filter {
     gap: 10px;
     width: 100%;
@@ -28,4 +103,10 @@
     font-size: 13px;
     font-weight: 400;
     color: #3D3D3D;
+    margin-top: 7px;
 }
+
+
+
+
+

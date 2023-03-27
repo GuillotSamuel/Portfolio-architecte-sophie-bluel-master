@@ -1,3 +1,30 @@
+/* Mode edition et verification de la connexion */
+
+// Verification du token
+/* function tokenVerification (){
+    const token = localStorage.getItem("token");
+    console.log(token);
+
+    fetch("http://localhost:5678/api/users/login", {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+          // Token valide, récupérez les données
+          console.log("token valide");
+        } else {
+          // Token invalide, affichez un message d'erreur ou redirigez l'utilisateur vers la page de connexion
+          console.log("Token invalide");
+        }
+      })
+    
+}
+
+tokenVerification(); */
+
+
 // Fonction Fetch de l'API/works
 async function worksApi () {
     const reponse = await fetch("http://localhost:5678/api/works");
@@ -90,3 +117,25 @@ boutonHotelsRest.addEventListener("click", function () {
     document.querySelector(".gallery").innerHTML = "";
     selectedWorks(3);
 })
+
+
+/* Edition mode */
+
+
+const sectionEditionMode = document.querySelector("#edition-mode");
+const sectionEditionModeContainer = document.createElement("div");
+sectionEditionModeContainer.className = "mode-edition-container";
+const logoEdition = document.createElement("i");
+logoEdition.className = "fa-light fa-pen-to-square edition-mode-item";
+const modeEditionTitle = document.createElement("div");
+modeEditionTitle.textContent = "Mode édition";
+modeEditionTitle.className = "mode-edition-title edition-mode-item";
+const changesPublishing = document.createElement("button");
+changesPublishing.textContent = "publier les changements";
+changesPublishing.className = "change-publishing-button edition-mode-item";
+
+sectionEditionMode.appendChild(sectionEditionModeContainer);
+sectionEditionModeContainer.appendChild(logoEdition);
+sectionEditionModeContainer.appendChild(modeEditionTitle);
+sectionEditionMode.appendChild(changesPublishing);
+
