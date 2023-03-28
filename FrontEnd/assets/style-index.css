@@ -5,9 +5,6 @@
     justify-content: center;
     background-color: black;
     width: 100vw;
-    position: absolute;
-    left: 0;
-    top: 0;
     gap: 21px;
     padding: 10px;
 }
@@ -16,6 +13,14 @@
     display: flex;
     gap: 9px;
     align-items: center;
+}
+
+.edition-mode-logo {
+    color: white;
+}
+
+.edition-mode-item {
+    color: black;
 }
 
 .mode-edition-title {
@@ -30,6 +35,8 @@
     background-color: white;
     padding: 11px 23px;
 }
+
+
 
 
 /* Modal / Overlay */
@@ -60,6 +67,175 @@
     display: none;
 }
 
+/* Modal 1 */
+
+.modal-1-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.modal-1-title {
+    font-size: 26px;
+    font-weight: 400;
+    font-family: 'Work Sans';
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 46px;
+}
+
+.modal-1-logo-container {
+    display: flex;
+    width: 100%;
+}
+
+.modal-elements-container {
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.separation-modal-1 {
+    width: 100%;
+    height: 1px;
+    background-color: #B3B3B3;
+    margin-bottom: 38px;
+}
+
+.adding-picture-button1 {
+    background-color: #1D6154;
+    height: 36px;
+    width: 237px;
+    border-radius: 60px;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Syne';
+    margin-bottom: 23px;
+}
+
+.galery-suppression {
+    font-family: 'Syne';
+    color: #D65353;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* Modal 2 */
+
+.modal-2-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.modal-2-title {
+    font-size: 26px;
+    font-weight: 400;
+    font-family: 'Work Sans';
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 36px;
+}
+
+.picture-emplacement {
+    background-color: #E8F1F6;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px; 
+}
+
+.adding-picture-button2 {
+    background-color: #CBD6DC;
+    color: #306685;
+    font-size: 14px;
+    font-size: 'Work Sans';
+    font-weight: 500;
+    border-radius: 50px;
+    border: none;
+    padding: 10px 33px;
+    margin-bottom: 7px;
+    width: 173px;
+}
+
+#picture-format-definition {
+    margin-bottom : 19px;
+    font-size: 10px;
+    font-style: 'Work Sans';
+    color: #444444;
+}
+
+.form-modal-2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-modal-2 {
+    font-size: 14px;
+    font-weight: 500;
+    font-style: 'Work Sans';
+    color: #3D3D3D;
+    margin-bottom: 10px;
+}
+
+.input-modal-2 {
+    border: none;
+    background-color: white;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    height: 51px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Work Sans';
+    color: #444444;
+    padding-left: 16px;
+}
+
+.title-input-modal-2 {
+    margin-bottom: 21px;
+}
+
+.email-input-modal-2 {
+    margin-bottom: 47px;
+}
+
+.separation-modal-2 {
+    width: 100%;
+    height: 1px;
+    background-color: #B3B3B3;
+    margin-bottom: 32px;
+}
+
+.validation-modal-2 {
+    background-color: #A7A7A7;
+    height: 36px;
+    width: 237px;
+    border-radius: 60px;
+    border: none;
+    font-style: 'Syne';
+    font-weight: 700;
+    color: white;
+    font-size: 14px;
+}
+
+/* Portrait */
+
+.portrait-container {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.modifier-logo-portrait {
+    margin-left: 40px;
+}
+
 
 /* Portfolio / Gallery */
 
@@ -67,6 +243,23 @@
     display: flex;
     flex-direction: column;
     gap: 51px;
+}
+
+.portfolio-title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 31px;
+}
+
+.modifier-container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.modifier-text {
+    font-size: 14px;
 }
 
 .portfolio-title {
@@ -105,7 +298,6 @@
     color: #3D3D3D;
     margin-top: 7px;
 }
-
 
 
 

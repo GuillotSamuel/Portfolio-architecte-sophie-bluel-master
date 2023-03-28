@@ -1,29 +1,4 @@
-/* Mode edition et verification de la connexion */
-
-// Verification du token
-/* function tokenVerification (){
-    const token = localStorage.getItem("token");
-    console.log(token);
-
-    fetch("http://localhost:5678/api/users/login", {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        },
-    })
-    .then(response => {
-        if (response.ok) {
-          // Token valide, récupérez les données
-          console.log("token valide");
-        } else {
-          // Token invalide, affichez un message d'erreur ou redirigez l'utilisateur vers la page de connexion
-          console.log("Token invalide");
-        }
-      })
-    
-}
-
-tokenVerification(); */
-
+/* AFFICHAGE DES WORKS */
 
 // Fonction Fetch de l'API/works
 async function worksApi () {
@@ -90,6 +65,10 @@ async function selectedWorks(id) {
 // Affichage initial
 allWorks();
 
+/* ------------------------------------------------------------------------- */
+
+/* BOUTONS DE TRI DES WORKS */
+
 // Bouton Tous
 const boutonTous = document.querySelector("#tous-button") 
 boutonTous.addEventListener("click", function () {
@@ -118,15 +97,15 @@ boutonHotelsRest.addEventListener("click", function () {
     selectedWorks(3);
 })
 
+/* ------------------------------------------------------------------------- */
 
-/* Edition mode */
-
+/* EDITION MODE */
 
 const sectionEditionMode = document.querySelector("#edition-mode");
 const sectionEditionModeContainer = document.createElement("div");
 sectionEditionModeContainer.className = "mode-edition-container";
 const logoEdition = document.createElement("i");
-logoEdition.className = "fa-light fa-pen-to-square edition-mode-item";
+logoEdition.className = "fa fa-pen-to-square edition-mode-logo";
 const modeEditionTitle = document.createElement("div");
 modeEditionTitle.textContent = "Mode édition";
 modeEditionTitle.className = "mode-edition-title edition-mode-item";
@@ -139,3 +118,85 @@ sectionEditionModeContainer.appendChild(logoEdition);
 sectionEditionModeContainer.appendChild(modeEditionTitle);
 sectionEditionMode.appendChild(changesPublishing);
 
+// Mode edition
+
+const tokenPresence = localStorage.getItem("token");
+if (tokenPresence) {
+
+    // Masquage du bouton login
+    const loginButton = document.querySelector("#login-button");
+    loginButton.style.display = "none";
+
+    // Masquage des boutons de tri
+    const galleryFilterHidden = document.querySelector(".gallery-filter");
+    galleryFilterHidden.style.display = "none";
+}
+else {
+    
+// Masquage de la barre d'edition
+const editionModeHidden = document.querySelector("#edition-mode");
+editionModeHidden.style.display = "none";
+
+// Masquage du bouton logout
+const logoutButton = document.querySelector("#logout-button");
+logoutButton.style.display = "none";
+
+// Masquage des boutons "modifier"
+const modifierButton = document.querySelector(".modifier-container");
+modifierButton.style.display = "none";
+const modifierPortfolioButton = document.querySelector(".modifier-container-portfolio");
+modifierPortfolioButton.style.display = "none";
+
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* DECONNEXION */
+
+// Suppression du token
+const buttonLogout = document.querySelector("#logout-button");
+buttonLogout.addEventListener ("click", function () {
+    localStorage.removeItem('token');
+    location.reload ();
+})
+
+/* ------------------------------------------------------------------------- */
+
+/* AFFICHAGE DE LA MODALE */
+
+// Portfolio button modifier : ouverture de la modale
+const buttonModifierPortfolio = document.querySelector(".modifier-container-portfolio");
+buttonModifierPortfolio.addEventListener ("click", function () {
+    const overlayActivation = document.querySelector(".overlay");
+    overlayActivation.style.display = "block";
+    const modalActivation = document.querySelector(".modal");
+    modalActivation.style.display = "block";
+})
+
+// Ajout d'une photo dans la modale
+const modal2container = document.querySelector(".modal-2-container");
+modal2container.style.display = "none";
+const buttonAddingPicture = document.querySelector(".adding-picture-button1");
+buttonAddingPicture.addEventListener ("click", function () {
+    const modal1Container = document.querySelector(".modal-1-container");
+    modal1Container.style.display = "none";
+    modal2container.style.display = "block";
+})
+
+// Retourner de modale 2 vers modale 1
+const returnToModal1 = document.querySelector(".return-modal-1");
+returnToModal1.addEventListener ("click", function () {
+    const modal1Container = document.querySelector(".modal-1-container");
+    const modal2Container = document.querySelector(".modal-2-container");
+    modal1Container.style.display = "block";
+    modal2container.style.display = "none";
+})
+
+// Fermeture de la modale
+const closingModalButton = document.querySelector(".closing-modale");
+closingModalButton.addEventListener ("click", function () {
+    const modalClosing = document.querySelector(".modal");
+    modalClosing.style.display = "none";
+    const overlayClosing = document.querySelector(".overlay");
+    overlayClosing.style.display = "none";
+})

@@ -10,7 +10,7 @@
 		<meta name="description" content="">
 		<link rel="stylesheet" href="./assets/style.css">
 		<link rel="stylesheet" href="./assets/style-index.css">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 	</head>
 <body>
 
@@ -20,6 +20,46 @@
 
 	<div class="modal">
 		
+		<!-- 1 : Affichage de la galerie et boutons Ajout / Suppression de photos de la galerie -->
+		<div class="modal-1-container">
+			<div class="modal-1-logo-container">
+				<i class="fa-regular fa-xmark closing-modale closing-modale-1"></i>
+			</div>
+			<div class="modal-elements-container">			
+				<h2 class="modal-1-title">Galerie photo</h2>	
+				<div class="gallery-management"></div>
+				<div class="separation-modal-1"></div>
+				<button class="adding-picture-button1">Ajouter une photo</button>
+				<div class="galery-suppression">Supprimer la galerie</div>
+			</div>		
+		</div>
+
+		<!-- 2 : Ajout d'une photo -->
+		<div class="modal-2-container">
+			<div class="modal-2-logo-container">
+				<i class="fa fa-arrow-left return-modal-1"></i>
+				<i class="fa-regular fa-xmark closing-modale"></i>
+			</div>
+			<h2 class="modal-2-title">Ajout photo</h2>
+			<div class="picture-emplacement">
+				<i class="fa-sharp fa-light fa-image"></i>
+				<button class="adding-picture-button2">+ Ajouter photo</button>
+				<div id="picture-format-definition">jpg. png : 4mo max</div>
+			</div>
+			<form action="#" method="post" class="form-modal-2">
+				<label class="title-modal-2 label-modal-2" for="title">Titre</label>
+				<input class="input-modal-2 title-input-modal-2" type="text" name="title" id="title">
+				<label class="category-modal-2 label-modal-2" for="category">Catégorie</label>
+				<select class="input-modal-2 email-input-modal-2" name="email" id="email">
+					<option class="categoryId1" selected hidden value=""></option>
+					<option class="categoryId1" value="Objets">Objets</option>
+					<option class="categoryId2" value="Appartements">Appartements</option>
+					<option class="categoryId3" value="Hôtels & restaurants">Hôtels & restaurants</option>
+				</select>
+			</form>
+			<div class="separation-modal-2"></div>
+			<button class="validation-modal-2">Valider</button>
+		</div>
 	</div>
 
 	<header>
@@ -28,15 +68,20 @@
 			<ul>
 				<li><a href="index.html">projets</a></li>
 				<li><a href="index.html#contact">contact</a></li>
-				<li><a href="login.html">login</a></li>
+				<li><a id="login-button" href="login.html">login</a></li>
+				<li><a id="logout-button">logout</a></li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
 	</header>
 	<main>
 		<section id="introduction">
-			<figure>
+			<figure class="portrait-container">
 				<img src="./assets/images/sophie-bluel.png" alt="">
+				<div class="modifier-container">
+					<i class="fa fa-pen-to-square modifier-logo modifier-logo-portrait"></i>
+					<div class="modifier-text">modifier</div>
+				</div>
 			</figure>
 			<article>
 				<h2>Designer d'espace</h2>
@@ -47,7 +92,14 @@
 		</section>
 
 		<section id="portfolio">
-			<h2 class="portfolio-title">Mes Projets</h2>
+			<div class="portfolio-title-container">			
+				<h2 class="portfolio-title">Mes Projets</h2>
+				<div class="modifier-container modifier-container-portfolio">
+					<i class="fa fa-pen-to-square modifier-logo modifier-logo-portfolio"></i>
+					<div class="modifier-text">modifier</div>
+				</div>
+			</div>
+
 			<div class="gallery-filter">
 				<button id="tous-button" class="gallery-filter-button gallery-filter-button1">Tous</button>
 				<button id="objets-button" class="gallery-filter-button gallery-filter-button1">Objets</button>
