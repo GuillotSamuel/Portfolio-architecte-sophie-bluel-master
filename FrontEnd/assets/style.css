@@ -56,7 +56,7 @@ header {
 	max-width: 1140px;
 	display: flex;
 	justify-content: space-between;
-	margin: 38px 0px 0px 0px;
+	padding: 96px 0px 0px 0px;
 }
 main {
 	margin:auto;
@@ -118,19 +118,22 @@ li:hover {
 }
 #introduction {
 	display: flex;
+	flex-direction: row;
+	width: 100%;
 	align-items: center;
 }
 #introduction figure {
 	flex: 1
 }
-#introduction img {
+#introduction .portrait-container img {
 	display: block;
 	margin: auto;
-	width: 80%;
+	width: 100%;
 }
 
 #introduction article {
-	flex: 1
+	flex: 1;
+	padding-left: 72px;
 }
 #introduction h2 {
 	margin-bottom: 1em;
@@ -141,7 +144,6 @@ li:hover {
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
 }
 .gallery {
 	width: 100%;

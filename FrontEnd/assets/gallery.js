@@ -12,30 +12,29 @@ async function recupererWorks(i) {
 
     const works = await worksApi();
 
+    // Recuperation de l'element du DOM accueillant les works
+    const sectionWorks = document.querySelector(".gallery");
+    const pieceWorks = document.createElement("article");
 
-        // Recuperation de l'element du DOM accueillant les works
-        const sectionWorks = document.querySelector(".gallery");
-        const pieceWorks = document.createElement("article");
+    // Recuperation de l'url de l'image d'un works[i]
+    const imageLien = works[i].imageUrl;
+    // Creation d'un element contenant une image
+    const imageWorks = document.createElement("img");
+    // Affectation d'une image a l'element contenant une image grace au lien URL
+    imageWorks.src = imageLien;
 
-        // Recuperation de l'url de l'image d'un works[i]
-        const imageLien = works[i].imageUrl;
-        // Creation d'un element contenant une image
-        const imageWorks = document.createElement("img");
-        // Affectation d'une image a l'element contenant une image grace au lien URL
-        imageWorks.src = imageLien;
+    // Recuperation du titre du works[i]
+    const titleWorks = document.createElement("p");
+    // Affectation du titre a l'element
+    titleWorks.innerText = works[i].title;
 
-        // Recuperation du titre du works[i]
-        const titleWorks = document.createElement("p");
-        // Affectation du titre a l'element
-        titleWorks.innerText = works[i].title;
-
-        // Affichage du work[i] et creation de classes
-        sectionWorks.appendChild(pieceWorks);
-        pieceWorks.appendChild(imageWorks);
-        pieceWorks.appendChild(titleWorks);
-        pieceWorks.className = "works-card";
-        imageWorks.className = "works-image";
-        titleWorks.className = "works-title";
+    // Affichage du work[i] et creation de classes
+    sectionWorks.appendChild(pieceWorks);
+    pieceWorks.appendChild(imageWorks);
+    pieceWorks.appendChild(titleWorks);
+    pieceWorks.className = "works-card";
+    imageWorks.className = "works-image";
+    titleWorks.className = "works-title";
 
 }
 
@@ -69,11 +68,22 @@ allWorks();
 
 /* BOUTONS DE TRI DES WORKS */
 
+function changeFilterColor (boutonClicked) {
+    var filterButtons = document.getElementsByClassName("gallery-filter-button");
+    for (var i = 0; i < filterButtons.length; i++) {
+        filterButtons[i].style.backgroundColor = "white";
+        filterButtons[i].style.color = "#1D6154";
+    }
+    boutonClicked.style.backgroundColor = "#1D6154";
+    boutonClicked.style.color = "white"; 
+}
+
 // Bouton Tous
 const boutonTous = document.querySelector("#tous-button") 
 boutonTous.addEventListener("click", function () {
     document.querySelector(".gallery").innerHTML = "";
     allWorks();
+    changeFilterColor (boutonTous);
 })
 
 // Bouton Objets
@@ -81,6 +91,7 @@ const boutonObjets = document.querySelector("#objets-button")
 boutonObjets.addEventListener("click", function () {
     document.querySelector(".gallery").innerHTML = "";
     selectedWorks(1);
+    changeFilterColor (boutonObjets);
 })
 
 // Bouton Appartements
@@ -88,6 +99,7 @@ const boutonAppartements = document.querySelector("#appartements-button")
 boutonAppartements.addEventListener("click", function () {
     document.querySelector(".gallery").innerHTML = "";
     selectedWorks(2);
+    changeFilterColor (boutonAppartements);
 })
 
 // Bouton Hotels et restaurants
@@ -95,7 +107,13 @@ const boutonHotelsRest = document.querySelector("#hotels-rest-button")
 boutonHotelsRest.addEventListener("click", function () {
     document.querySelector(".gallery").innerHTML = "";
     selectedWorks(3);
+    changeFilterColor (boutonHotelsRest);
 })
+
+// Couleur de base des boutons de tri
+boutonTous.style.backgroundColor = "#1D6154";
+boutonTous.style.color = "white";
+
 
 /* ------------------------------------------------------------------------- */
 
@@ -173,6 +191,49 @@ buttonModifierPortfolio.addEventListener ("click", function () {
     modalActivation.style.display = "block";
 })
 
+async function allWorks2() {
+
+    const works = await worksApi();
+
+    for (let i = 0; i < works.length; i++) {
+        recupererWorks2(i);
+        console.log("recupererWorks");
+    }
+}
+
+// Affichage de l'ensemble des photos enregistrees dans la modale 1
+async function recupererWorks2(i) {
+
+    const works = await worksApi();
+
+    // Recuperation de l'element du DOM accueillant les works
+    const sectionWorks2 = document.querySelector(".gallery-management");
+    const pieceWorks2 = document.createElement("article");
+
+    // Recuperation de l'url de l'image d'un works[i]
+    const imageLien = works[i].imageUrl;
+    // Creation d'un element contenant une image
+    const imageWorks2 = document.createElement("img");
+    // Affectation d'une image a l'element contenant une image grace au lien URL
+    imageWorks2.src = imageLien;
+
+    // Recuperation du titre du works[i]
+    const editingWorks2 = document.createElement("p");
+    // Affectation du titre a l'element
+    editingWorks2.innerText = "éditer";
+
+    // Affichage du work[i] et creation de classes
+    sectionWorks2.appendChild(pieceWorks2);
+    pieceWorks2.appendChild(imageWorks2);
+    pieceWorks2.appendChild(editingWorks2);
+    pieceWorks2.className = "works-card2";
+    imageWorks2.className = "works-image2";
+    editingWorks2.className = "editingWorks-card2";
+}
+
+
+allWorks2 ();
+
 // Ajout d'une photo dans la modale
 const modal2container = document.querySelector(".modal-2-container");
 modal2container.style.display = "none";
@@ -199,4 +260,26 @@ closingModalButton.addEventListener ("click", function () {
     modalClosing.style.display = "none";
     const overlayClosing = document.querySelector(".overlay");
     overlayClosing.style.display = "none";
+})
+
+/* ------------------------------------------------------------------------- */
+
+/* SUPPRESSION DE LA GALERIE */
+
+const galerySuppression = document.querySelector(".galery-suppression");
+galerySuppression.addEventListener ("click", function () {
+    const modalGallerySuppression = document.querySelector(".modal-galery-suppression");
+    modalGallerySuppression.style.display = "block";
+})
+
+const annulationButton = document.querySelector(".annulation-button-galery-suppression");
+annulationButton.addEventListener ("click", function () {
+    const modalGallerySuppression = document.querySelector(".modal-galery-suppression");
+    modalGallerySuppression.style.display = "none";
+})
+
+const confirmationButton = document.querySelector(".confirmation-button-galery-suppression");
+confirmationButton.addEventListener ("click", function () {
+    const modalGallerySuppression = document.querySelector(".modal-galery-suppression");
+    modalGallerySuppression.style.display = "none";
 })
