@@ -141,9 +141,9 @@ sectionEditionMode.appendChild(changesPublishing);
 const tokenPresence = localStorage.getItem("token");
 if (tokenPresence) {
 
-    // Masquage du bouton login
-    const loginButton = document.querySelector("#login-button");
-    loginButton.style.display = "none";
+    // Affichage du bouton logout
+    const loginLogoutButton = document.querySelector("#login-logout-button");
+    loginLogoutButton.innerHTML = "logout";
 
     // Masquage des boutons de tri
     const galleryFilterHidden = document.querySelector(".gallery-filter");
@@ -155,9 +155,10 @@ else {
 const editionModeHidden = document.querySelector("#edition-mode");
 editionModeHidden.style.display = "none";
 
-// Masquage du bouton logout
-const logoutButton = document.querySelector("#logout-button");
-logoutButton.style.display = "none";
+// Affichage du bouton login
+const loginLogoutButton = document.querySelector("#login-logout-button");
+loginLogoutButton.href="login.html";
+loginLogoutButton.innerHTML = "login";
 
 // Masquage des boutons "modifier"
 const modifierButton = document.querySelector(".modifier-container");
@@ -172,7 +173,7 @@ modifierPortfolioButton.style.display = "none";
 /* DECONNEXION */
 
 // Suppression du token
-const buttonLogout = document.querySelector("#logout-button");
+const buttonLogout = document.querySelector("#login-logout-button");
 buttonLogout.addEventListener ("click", function () {
     localStorage.removeItem('token');
     location.reload ();
@@ -250,17 +251,41 @@ returnToModal1.addEventListener ("click", function () {
     const modal1Container = document.querySelector(".modal-1-container");
     const modal2Container = document.querySelector(".modal-2-container");
     modal1Container.style.display = "block";
-    modal2container.style.display = "none";
+    modal2Container.style.display = "none";
 })
 
-// Fermeture de la modale
-const closingModalButton = document.querySelector(".closing-modale");
-closingModalButton.addEventListener ("click", function () {
+// Fermeture des fenetres modales
+function closingModalFunction () {
     const modalClosing = document.querySelector(".modal");
     modalClosing.style.display = "none";
     const overlayClosing = document.querySelector(".overlay");
     overlayClosing.style.display = "none";
+    const modal1Container = document.querySelector(".modal-1-container");
+    const modal2Container = document.querySelector(".modal-2-container");
+    modal1Container.style.display = "block";
+    modal2Container.style.display = "none";
+}
+
+const closingModalButton = document.querySelector(".closing-modale-1");
+closingModalButton.addEventListener ("click", function () {
+    closingModalFunction ();
 })
+
+const closingModalBody = document.getElementsByTagName("body")[0];
+closingModalBody.addEventListener ("mousedown", function(event) {
+    const modal = document.querySelector(".modal-1-container");
+    if (!modal.contains(event.target)) {
+        closingModalFunction ();
+    }
+})
+
+const closingModalButton2 = document.querySelector(".closing-modale-2");
+closingModalButton2.addEventListener ("click", function () {
+    closingModalFunction ();
+})
+
+
+
 
 /* ------------------------------------------------------------------------- */
 

@@ -35,6 +35,7 @@
     border-radius: 60px;
     background-color: white;
     padding: 11px 23px;
+    cursor: pointer;
 }
 
 
@@ -141,6 +142,10 @@
 
 /* Modal-gallery-suppression */
 
+.modifier-text {
+    cursor: pointer;
+}
+
 .modal-galery-suppression {
     position: fixed;
     top: 50%;
@@ -177,7 +182,7 @@
 
 
 .confirmation-button-galery-suppression {
-    background-color: #D65353;
+    background-color: #1D6154;
     height: 36px;
     width: 237px;
     border-radius: 60px;
@@ -188,7 +193,7 @@
     font-family: 'Syne';
 }
 .annulation-button-galery-suppression {
-    background-color: #1D6154;
+    background-color: #D65353;
     height: 36px;
     width: 237px;
     border-radius: 60px;
@@ -233,6 +238,13 @@
     align-items: center;
     margin-bottom: 30px; 
     width: 100%;
+}
+
+.picture-modal-2 {
+    color: #B9C5CC;
+    font-size: 46px;
+    margin-top: 28px;
+    margin-bottom: 21px;
 }
 
 .adding-picture-button2 {
@@ -319,6 +331,10 @@
 
 .modifier-logo-portrait {
     margin-left: 40px;
+}
+
+#login-logout-button {
+    cursor: pointer;
 }
 
 
