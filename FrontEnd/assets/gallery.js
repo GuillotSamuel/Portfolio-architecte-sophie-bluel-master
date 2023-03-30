@@ -262,8 +262,10 @@ function closingModalFunction () {
     overlayClosing.style.display = "none";
     const modal1Container = document.querySelector(".modal-1-container");
     const modal2Container = document.querySelector(".modal-2-container");
+    const modalSuppressionConfirmation = document.querySelector(".modal-galery-suppression")
     modal1Container.style.display = "block";
     modal2Container.style.display = "none";
+    modalSuppressionConfirmation.style.display = "none";
 }
 
 const closingModalButton = document.querySelector(".closing-modale-1");
@@ -273,7 +275,7 @@ closingModalButton.addEventListener ("click", function () {
 
 const closingModalBody = document.getElementsByTagName("body")[0];
 closingModalBody.addEventListener ("mousedown", function(event) {
-    const modal = document.querySelector(".modal-1-container");
+    const modal = document.querySelector(".modal");
     if (!modal.contains(event.target)) {
         closingModalFunction ();
     }

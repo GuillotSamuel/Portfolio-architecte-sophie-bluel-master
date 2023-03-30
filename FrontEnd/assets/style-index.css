@@ -72,7 +72,6 @@
 /* Modal 1 */
 
 .modal-1-container {
-    width: 420px;
     margin-left: 105px;
     display: flex;
     flex-direction: column;
@@ -90,7 +89,14 @@
 
 .modal-1-logo-container {
     display: flex;
-    width: 100%;
+    margin: 26px 30px 13px 30px;
+    justify-content: space-between;
+    justify-content: right;
+}
+
+.closing-modale-1 {
+    padding: 6px;
+    font-size: 15px;
 }
 
 .modal-1-elements-container {
@@ -211,6 +217,17 @@
     flex-direction: column;
     width: 100%;
     align-items: center;
+}
+
+.modal-2-logo-container {
+    display: flex;
+    margin: 26px 30px 13px 30px;
+    justify-content: space-between;
+}
+
+.closing-modale-2 {
+    padding: 6px;
+    font-size: 15px;
 }
 
 .modal-2-elements-container {
