@@ -140,7 +140,6 @@ sectionEditionMode.appendChild(changesPublishing);
 
 const tokenPresence = localStorage.getItem("token");
 if (tokenPresence) {
-
     // Affichage du bouton logout
     const loginLogoutButton = document.querySelector("#login-logout-button");
     loginLogoutButton.innerHTML = "logout";
@@ -150,7 +149,6 @@ if (tokenPresence) {
     galleryFilterHidden.style.display = "none";
 }
 else {
-    
 // Masquage de la barre d'edition
 const editionModeHidden = document.querySelector("#edition-mode");
 editionModeHidden.style.display = "none";
@@ -165,8 +163,34 @@ const modifierButton = document.querySelector(".modifier-container");
 modifierButton.style.display = "none";
 const modifierPortfolioButton = document.querySelector(".modifier-container-portfolio");
 modifierPortfolioButton.style.display = "none";
-
 }
+
+/* Ajouter une photo button */
+const photoInput = document.getElementById('picture-adding');
+const addingPictureButton2 = document.getElementsByClassName('adding-picture-button2')[0];
+
+addingPictureButton2.addEventListener ("click", () => {
+    photoInput.click();
+});
+
+photoInput.addEventListener('change', () => {
+    const file = photoInput.files[0];
+    const fileSize = file.size;
+    const fileType = file.type;
+    const allowedTypes = ['image/jpeg', 'image/png'];
+    const maxSize = 4 * 1024 * 1024; // 4 MB
+
+    if (!allowedTypes.includes(fileType)) {
+        alert('Le format de fichier n\'est pas valide. Veuillez sélectionner une image au format JPEG ou PNG.');
+        photoInput.value = '';
+    } else if (fileSize > maxSize) {
+        alert('La taille de fichier dépasse 4Mo. Veuillez sélectionner une image plus petite.');
+        photoInput.value = '';
+    } else {
+        // Traitement de la photo sélectionnée
+        console.log(file);
+    }
+});
 
 /* ------------------------------------------------------------------------- */
 
@@ -198,7 +222,6 @@ async function allWorks2() {
 
     for (let i = 0; i < works.length; i++) {
         recupererWorks2(i);
-        console.log("recupererWorks");
     }
 }
 

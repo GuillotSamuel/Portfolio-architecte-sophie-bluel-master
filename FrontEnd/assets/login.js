@@ -38,8 +38,7 @@ loginForm.addEventListener("submit", async function(event) {
     })
     .catch(error => {
         // Affichage d'un message d'erreur en cas de connection impossible
-        console.error("Error logging in:", error);
-        alert("Failed to log in. Please check your email and password and try again.");
+        alert("Impossible de se connecter, merci de renseigner à nouveau votre E-mail et votre mot de passe.");
     });
 });
 
