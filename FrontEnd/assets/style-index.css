@@ -97,6 +97,7 @@
 .closing-modale-1 {
     padding: 6px;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .modal-1-elements-container {
@@ -137,6 +138,7 @@
     font-weight: 700;
     font-family: 'Syne';
     margin-bottom: 23px;
+    cursor: pointer;
 }
 
 .galery-suppression {
@@ -144,6 +146,7 @@
     color: #D65353;
     font-size: 14px;
     font-weight: 400;
+    cursor: pointer;
 }
 
 /* Modal-gallery-suppression */
@@ -197,6 +200,7 @@
     font-size: 14px;
     font-weight: 700;
     font-family: 'Syne';
+    cursor: pointer;
 }
 .annulation-button-galery-suppression {
     background-color: #D65353;
@@ -208,6 +212,7 @@
     font-size: 14px;
     font-weight: 700;
     font-family: 'Syne';
+    cursor: pointer;
 }
 
 /* Modal 2 */
@@ -225,9 +230,14 @@
     justify-content: space-between;
 }
 
+.return-modal-1 {
+    cursor: pointer;
+}
+
 .closing-modale-2 {
     padding: 6px;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .modal-2-elements-container {
@@ -257,6 +267,16 @@
     width: 100%;
 }
 
+#preview-picture {
+    max-height: 169px;
+}
+
+.adding-picture-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .picture-modal-2 {
     color: #B9C5CC;
     font-size: 46px;
@@ -268,13 +288,18 @@
     background-color: #CBD6DC;
     color: #306685;
     font-size: 14px;
-    font-size: 'Work Sans';
+    font-style: 'Work Sans';
     font-weight: 500;
     border-radius: 50px;
     border: none;
     padding: 10px 33px;
     margin-bottom: 7px;
-    width: 173px;
+    width: 107px;
+    cursor: pointer;
+}
+
+#picture-adding {
+    display: none;
 }
 
 #picture-format-definition {
@@ -335,6 +360,7 @@
     font-weight: 700;
     color: white;
     font-size: 14px;
+    cursor: pointer;
 }
 
 /* Portrait */

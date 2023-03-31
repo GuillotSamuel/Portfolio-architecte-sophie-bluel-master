@@ -168,9 +168,10 @@ modifierPortfolioButton.style.display = "none";
 /* Ajouter une photo button */
 const photoInput = document.getElementById('picture-adding');
 const addingPictureButton2 = document.getElementsByClassName('adding-picture-button2')[0];
+const previewPicture = document.querySelector('#preview-picture');
 
-addingPictureButton2.addEventListener ("click", () => {
-    photoInput.click();
+addingPictureButton2.addEventListener("click", () => {
+  photoInput.click();
 });
 
 photoInput.addEventListener('change', () => {
@@ -187,10 +188,16 @@ photoInput.addEventListener('change', () => {
         alert('La taille de fichier dépasse 4Mo. Veuillez sélectionner une image plus petite.');
         photoInput.value = '';
     } else {
-        // Traitement de la photo sélectionnée
-        console.log(file);
+        const reader = new FileReader();
+        reader.onload = function() {
+        previewPicture.src = reader.result;
+        }
+        reader.readAsDataURL(file);
+        const hiddingPictureAddingContainer = document.querySelector(".adding-picture-container");
+        hiddingPictureAddingContainer.style.display = "none";
     }
 });
+
 
 /* ------------------------------------------------------------------------- */
 
@@ -333,3 +340,7 @@ confirmationButton.addEventListener ("click", function () {
     const modalGallerySuppression = document.querySelector(".modal-galery-suppression");
     modalGallerySuppression.style.display = "none";
 })
+
+
+
+

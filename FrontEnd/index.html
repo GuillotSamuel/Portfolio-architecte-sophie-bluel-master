@@ -53,12 +53,15 @@
 			<div class="modal-2-elements-container">
 				<h2 class="modal-2-title">Ajout photo</h2>
 				<div class="picture-emplacement">
-					<i class="fa-regular fa-image picture-modal-2"></i>
-					<form id="picture-adding-form">
-						<input class="adding-picture-button2" type="file" id="picture-adding" name="picture-adding">
-					</form>
-<!-- 				<button class="adding-picture-button2">+ Ajouter photo</button> -->
-					<div id="picture-format-definition">jpg. png : 4mo max</div>
+					<img id="preview-picture"></img>
+					<div class="adding-picture-container">
+						<i class="fa-regular fa-image picture-modal-2"></i>
+						<form id="picture-adding-form">
+							<div class="adding-picture-button2">+ Ajouter photo</div>
+							<input type="file" id="picture-adding" name="picture-adding">
+						</form>
+						<div id="picture-format-definition">jpg. png : 4mo max</div>
+					</div>
 				</div>
 				<form action="#" method="post" class="form-modal-2">
 					<label class="title-modal-2 label-modal-2" for="title">Titre</label>
