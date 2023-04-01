@@ -165,6 +165,26 @@ const modifierPortfolioButton = document.querySelector(".modifier-container-port
 modifierPortfolioButton.style.display = "none";
 }
 
+/* Changement de couleur du button de la modale 2 */
+function validationButton2ColorChange () {
+    const title = document.querySelector(".title-input-modal-2");
+    const category = document.querySelector(".category-input-modal-2");
+    const image = document.querySelector("#preview-picture");  
+    const imageUrl = image.src;  
+    console.log(title.value);
+    console.log(imageUrl.value);
+    console.log(category.value);
+    if (image.hasAttribute('src') && title && title.value.trim() !== "" && category && category.value.trim() !== "") {
+        const validationButton = document.querySelector(".validation-modal-2");
+        validationButton.style.backgroundColor = "#1D6154";
+    }
+}
+
+/* Envoi photo ajoutee button */
+/* function sendingNewPicture() {
+
+} */
+
 /* Ajouter une photo button */
 const photoInput = document.getElementById('picture-adding');
 const addingPictureButton2 = document.getElementsByClassName('adding-picture-button2')[0];
@@ -195,8 +215,11 @@ photoInput.addEventListener('change', () => {
         reader.readAsDataURL(file);
         const hiddingPictureAddingContainer = document.querySelector(".adding-picture-container");
         hiddingPictureAddingContainer.style.display = "none";
+
+        validationButton2ColorChange();
     }
 });
+
 
 
 /* ------------------------------------------------------------------------- */
@@ -210,6 +233,31 @@ buttonLogout.addEventListener ("click", function () {
     location.reload ();
 })
 
+
+
+/* ------------------------------------------------------------------------- */
+
+/* SUPPRESSION DE UN WORK */
+
+function deleteWork(workId) {
+    const url = `http://localhost:5678/api/works/${workId}`;
+    const token = localStorage.getItem("token")
+    fetch(url, {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+    .then(response => {
+            if (!response.ok) {
+            throw new Error("Erreur lors de la suppression du travail.");
+            }
+        })
+        .catch(error => {
+            console.error(error);
+    });
+}
+
 /* ------------------------------------------------------------------------- */
 
 /* AFFICHAGE DE LA MODALE */
@@ -222,15 +270,6 @@ buttonModifierPortfolio.addEventListener ("click", function () {
     const modalActivation = document.querySelector(".modal");
     modalActivation.style.display = "block";
 })
-
-async function allWorks2() {
-
-    const works = await worksApi();
-
-    for (let i = 0; i < works.length; i++) {
-        recupererWorks2(i);
-    }
-}
 
 // Affichage de l'ensemble des photos enregistrees dans la modale 1
 async function recupererWorks2(i) {
@@ -253,13 +292,40 @@ async function recupererWorks2(i) {
     // Affectation du titre a l'element
     editingWorks2.innerText = "éditer";
 
+    // Creation du logo de suppression
+    const suppressionLogo1Work = document.createElement("i");
+    // Recuperation de l'ID du works
+    const worksId = works[i].id;
+    // Ajout d'un attribut data-i contenant l'ID du work correspondant au click de suppression
+    suppressionLogo1Work.setAttribute("data-i", worksId);
+
+    // Ajout gestionnaire d'evenement au logo de suppression
+    suppressionLogo1Work.addEventListener("click", (event) => {
+        // Récupération de la valeur de data-i
+        const index = event.target.getAttribute("data-i");
+        console.log(`Supprimer l'élément numéro ${index}`);
+        deleteWork(index);
+    })
+    
     // Affichage du work[i] et creation de classes
     sectionWorks2.appendChild(pieceWorks2);
     pieceWorks2.appendChild(imageWorks2);
     pieceWorks2.appendChild(editingWorks2);
+    pieceWorks2.appendChild(suppressionLogo1Work);
     pieceWorks2.className = "works-card2";
     imageWorks2.className = "works-image2";
     editingWorks2.className = "editingWorks-card2";
+    suppressionLogo1Work.className = "fa-solid fa-trash-can suppression-logo-1-work";
+
+}
+
+async function allWorks2() {
+
+    const works = await worksApi();
+
+    for (let i = 0; i < works.length; i++) {
+        recupererWorks2(i);
+    }
 }
 
 
@@ -318,10 +384,18 @@ closingModalButton2.addEventListener ("click", function () {
 
 
 
-
 /* ------------------------------------------------------------------------- */
 
 /* SUPPRESSION DE LA GALERIE */
+
+async function allWorksSuppression () {
+    const reponse = await fetch("http://localhost:5678/api/works");
+    const works = await reponse.json();
+
+    for(let i = 1; i <= 200; i++) {
+        deleteWork(i);
+    }
+}
 
 const galerySuppression = document.querySelector(".galery-suppression");
 galerySuppression.addEventListener ("click", function () {
@@ -339,8 +413,6 @@ const confirmationButton = document.querySelector(".confirmation-button-galery-s
 confirmationButton.addEventListener ("click", function () {
     const modalGallerySuppression = document.querySelector(".modal-galery-suppression");
     modalGallerySuppression.style.display = "none";
+
+    allWorksSuppression ();
 })
-
-
-
-

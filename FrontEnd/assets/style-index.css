@@ -108,11 +108,24 @@
     width: 100%;
 }
 
+.suppression-logo-1-work {
+    position: relative;
+    top: -114px;
+    right: -57px;
+    color: white;
+    background-color: black;
+    padding: 3px;
+    border-radius: 3px;
+    font-size: 10px;
+}
+
 .gallery-management {
     display: flex;
     flex-wrap: wrap;
     gap: 9px;
     margin-bottom: 47px;
+    overflow: scroll;
+	max-height: 386px;
 }
 
 .works-card2 img {
