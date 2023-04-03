@@ -166,7 +166,7 @@ modifierPortfolioButton.style.display = "none";
 }
 
 /* Changement de couleur du button de la modale 2 */
-function validationButton2ColorChange () {
+/* function validationButton2ColorChange () {
     const title = document.querySelector(".title-input-modal-2");
     const category = document.querySelector(".category-input-modal-2");
     const image = document.querySelector("#preview-picture");  
@@ -178,17 +178,13 @@ function validationButton2ColorChange () {
         const validationButton = document.querySelector(".validation-modal-2");
         validationButton.style.backgroundColor = "#1D6154";
     }
-}
-
-/* Envoi photo ajoutee button */
-/* function sendingNewPicture() {
-
 } */
 
 /* Ajouter une photo button */
 const photoInput = document.getElementById('picture-adding');
 const addingPictureButton2 = document.getElementsByClassName('adding-picture-button2')[0];
 const previewPicture = document.querySelector('#preview-picture');
+const addingNewWorkButton = document.querySelector('.validation-modal-2');
 
 addingPictureButton2.addEventListener("click", () => {
   photoInput.click();
@@ -200,6 +196,8 @@ photoInput.addEventListener('change', () => {
     const fileType = file.type;
     const allowedTypes = ['image/jpeg', 'image/png'];
     const maxSize = 4 * 1024 * 1024; // 4 MB
+
+    console.log(file);
 
     if (!allowedTypes.includes(fileType)) {
         alert('Le format de fichier n\'est pas valide. Veuillez sélectionner une image au format JPEG ou PNG.');
@@ -215,10 +213,48 @@ photoInput.addEventListener('change', () => {
         reader.readAsDataURL(file);
         const hiddingPictureAddingContainer = document.querySelector(".adding-picture-container");
         hiddingPictureAddingContainer.style.display = "none";
-
-        validationButton2ColorChange();
     }
 });
+
+/* Ajout d'un work button */
+function addingNewWork () {
+
+    const title = document.querySelector(".title-input-modal-2");
+    const category = document.querySelector(".category-input-modal-2");
+    const image = document.querySelector("#picture-adding");  
+    const token = localStorage.getItem("token");
+
+    console.log(image.src);
+    console.log(title.value);
+    console.log(category.value);
+    console.log(token);
+  
+    const formData = new FormData();
+    formData.append("image", image.files[0]);
+    formData.append("title", title.value);
+    formData.append("category", category.value);
+  
+    fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      },
+      body: formData
+    })
+}
+
+addingNewWorkButton.addEventListener("click", () => {
+    addingNewWork ();
+})
+
+/* Changement de couleur du button envoi du work */
+const title = document.querySelector(".title-input-modal-2");
+const category = document.querySelector(".category-input-modal-2");
+const image = document.querySelector("#preview-picture");  
+if(title.value != "" && category.value != "" && image.src != "") {
+    const addingNewWorkButton = document.querySelector(".validation-modal-2");
+    addingNewWorkButton.style.backgroundColor = "#1D6154";
+}
 
 
 
@@ -241,7 +277,7 @@ buttonLogout.addEventListener ("click", function () {
 
 function deleteWork(workId) {
     const url = `http://localhost:5678/api/works/${workId}`;
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token");
     fetch(url, {
         method: "DELETE",
         headers: {
