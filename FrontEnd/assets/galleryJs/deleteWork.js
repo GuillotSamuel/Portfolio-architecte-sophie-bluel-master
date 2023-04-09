@@ -11,9 +11,6 @@ export async function deleteWork(workId) {
             if (!response.ok) {
             throw new Error("Erreur lors de la suppression du travail.");
             }
-            else {
-                deleteWorkFormCache (workId)
-            }
         })
         .catch(error => {
             console.error(error);

@@ -50,8 +50,13 @@ export async function allWorks() {
 
     const works = await worksApi();
 
-    for (let i = 0; i < works.length; i++) {
-        recupererWorks(i);
+    const firstDisplay = false;
+    if (!firstDisplay) {
+        for (let i = 0; i < works.length; i++) {
+
+            recupererWorks(i);
+        }
+        firstDisplay = true;
     }
 }
 
