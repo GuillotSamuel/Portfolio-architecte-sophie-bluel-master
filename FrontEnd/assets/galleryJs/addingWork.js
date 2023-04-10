@@ -2,6 +2,20 @@ function addingNewWork () {
   
   const addingNewWorkButton = document.querySelector('.validation-modal-2');
 
+  const title = document.querySelector(".title-input-modal-2");
+  const category = document.querySelector(".category-input-modal-2");
+  const image = document.querySelector("#picture-adding");
+
+  const checkFormValidity = () => {
+    if (image.files[0] && title.value && category.value) {
+      addingNewWorkButton.style.backgroundColor = "#1D6154";
+    }
+  }
+
+  title.addEventListener("input", checkFormValidity);
+  category.addEventListener("input", checkFormValidity);
+  image.addEventListener("change", checkFormValidity);
+
   addingNewWorkButton.addEventListener("click", () => {
     const title = document.querySelector(".title-input-modal-2");
     const category = document.querySelector(".category-input-modal-2");
@@ -27,6 +41,7 @@ function addingNewWork () {
     })
   })
 }
+
 
 function addingPhotoInput () {
 
@@ -64,7 +79,6 @@ function addingPhotoInput () {
     }
   });
 }
-
 
 export async function addingNewWorkManagement () {
 
