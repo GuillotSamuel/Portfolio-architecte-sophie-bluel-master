@@ -8,16 +8,14 @@ async function worksApi () {
 }
 
 // Affichage de l'ensemble des photos enregistrees dans la modale 1
-async function recupererWorks2(i) {
-
-    const works = await worksApi();
+async function recupererWorks2(work) {
 
     // Recuperation de l'element du DOM accueillant les works
     const sectionWorks2 = document.querySelector(".gallery-management");
     const pieceWorks2 = document.createElement("article");
 
     // Recuperation de l'url de l'image d'un works[i]
-    const imageLien = works[i].imageUrl;
+    const imageLien = work.imageUrl;
     // Creation d'un element contenant une image
     const imageWorks2 = document.createElement("img");
     // Affectation d'une image a l'element contenant une image grace au lien URL
@@ -31,13 +29,14 @@ async function recupererWorks2(i) {
     // Creation du logo de suppression
     const suppressionLogo1Work = document.createElement("i");
     // Recuperation de l'ID du works
-    const worksId = works[i].id;
+    const worksId = work.id;
     // Ajout d'un attribut data-i contenant l'ID du work correspondant au click de suppression
     suppressionLogo1Work.setAttribute("data-i", worksId);
 
     // Ajout gestionnaire d'evenement au logo de suppression
     suppressionLogo1Work.addEventListener("click", (event) => {
         // Récupération de la valeur de data-i
+        event.preventDefault();
         const index = event.target.getAttribute("data-i");
         deleteWork(index);
     })
@@ -59,6 +58,6 @@ export async function allWorks2() {
     const works = await worksApi();
 
     for (let i = 0; i < works.length; i++) {
-        recupererWorks2(i);
+        recupererWorks2(works[i]);
     }
 }
