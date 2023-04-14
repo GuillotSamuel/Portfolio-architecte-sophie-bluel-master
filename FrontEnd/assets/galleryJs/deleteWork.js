@@ -1,4 +1,9 @@
 export async function deleteWork(workId) {
+
+    caches.open('cacheWorks').then(function(cache) {
+        cache.delete('id', workId);
+    });
+
     const url = `http://localhost:5678/api/works/${workId}`;
     const token = localStorage.getItem("token");
     fetch(url, {
@@ -10,7 +15,7 @@ export async function deleteWork(workId) {
     .then(response => {
             if (!response.ok) {
             throw new Error("Erreur lors de la suppression du travail.");
-            }
+            } 
         })
         .catch(error => {
             console.error(error);

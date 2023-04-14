@@ -31,9 +31,6 @@ async function recupererWorks(work) {
     // Stockage du categoriiId dans pieceWorks
     pieceWorks.dataset.categoryId = categoryIdWorks;
 
-    // Creation et stockage du pieceWorksId  
-/*     pieceWorks.dataset.pieceWorksId = i;
- */
     // Affichage du work[i] et creation de classes
     sectionWorks.appendChild(pieceWorks);
     pieceWorks.appendChild(imageWorks);
@@ -41,6 +38,38 @@ async function recupererWorks(work) {
     pieceWorks.className = "works-card";
     imageWorks.className = "works-image";
     titleWorks.className = "works-title";
+}
+
+// Fonction Recuperer works from cache
+function recupererWorksFromCache () {
+    const gallery = document.querySelector('.gallery');
+
+    caches.open('cacheWorks').then(cache => {
+    cache.keys().then(keys => {
+        keys.forEach(request => {
+        cache.match(request).then(response => {
+            if (response) {
+                response.json().then(data => {
+                    const pieceWorks = document.createElement('article');
+                    const image = document.createElement('img');
+                    const title = document.createElement('p');
+
+                    title.textContent = data.title;
+                    image.src = data.imageUrl;
+
+                    pieceWorks.appendChild(image);
+                    pieceWorks.appendChild(title);
+                    gallery.appendChild(pieceWorks);
+                    pieceWorks.dataset.categoryId = data.categoryId;
+                    pieceWorks.className = "works-card";
+                    image.className = "works-image";
+                    title.className = "works-title";          
+                });
+            }
+        });
+        });
+    });
+    });
 }
 
 // Fonction : Affichage de tous les works
@@ -52,5 +81,7 @@ export async function allWorks() {
 
         recupererWorks(works[i]);
     }  
+
+    recupererWorksFromCache ();
 }
 

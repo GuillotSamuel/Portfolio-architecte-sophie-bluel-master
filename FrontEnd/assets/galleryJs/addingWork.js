@@ -2,7 +2,6 @@ function addingNewWork () {
 
   const form = document.querySelector('.form-modal-2');
   const formButton = document.querySelector('.validation-modal-2');
-  
   const title = document.querySelector('.title-input-modal-2');
   const category = document.querySelector('.category-input-modal-2');
   const image = document.querySelector('#picture-adding');
@@ -23,7 +22,7 @@ function addingNewWork () {
 
 
   form.addEventListener('submit', (event) => {
-    event.preventDefault();
+    event.preventDefault(); 
 
     const formData = new FormData();
     formData.append('title', title.value);
@@ -42,8 +41,33 @@ function addingNewWork () {
     .then(response => {
       if (!response.ok) {
         alert('Merci de compléter les trois champs avant de valider.');
+      } else {
+        
+        caches.open('cacheWorks').then(cache => {
+          const imageKey = `image-${image.files[0].name}`;
+          const titleKey = `title-${title.value}`;
+          const categoryKey = `category-${category.value}`;
+          
+          cache.match(imageKey).then(existingResponse => {
+            if (!existingResponse) {
+              cache.put(imageKey, response);
+            }
+          });
+          
+          cache.match(titleKey).then(existingResponse => {
+            if (!existingResponse) {
+              cache.put(titleKey, response.clone());
+            }
+          });
+          
+          cache.match(categoryKey).then(existingResponse => {
+            if (!existingResponse) {
+              cache.put(categoryKey, response.clone());
+            }
+          });
+        });
       }
-    }) 
+    })
   })
 }
 
