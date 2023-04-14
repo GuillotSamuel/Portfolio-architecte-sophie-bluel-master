@@ -1,5 +1,7 @@
 export async function deleteWork(workId) {
 
+    console.log("test")
+
     caches.open('cacheWorks').then(function(cache) {
         cache.delete('id', workId);
     });
@@ -20,4 +22,10 @@ export async function deleteWork(workId) {
         .catch(error => {
             console.error(error);
     });
+
+    // Supprimer l'objet correspondant du cache
+    // UTILISER LES CACHE KEY POUR ACCEDER AU NUMERO D'ID 
+/*     caches.open('myCache').then(cache => {
+        cache.delete();
+    }); */
 }

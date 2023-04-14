@@ -1,11 +1,5 @@
 import { deleteWork } from './deleteWork.js';
-
-// Fonction Fetch de l'API/works
-async function worksApi () {
-    const reponse = await fetch("http://localhost:5678/api/works");
-    const works = await reponse.json();
-    return works;
-}
+import { works } from './displayAllWorks.js';
 
 // Affichage de l'ensemble des photos enregistrees dans la modale 1
 async function recupererWorks2(work) {
@@ -90,8 +84,6 @@ function recupererWorksFromCache2 () {
 }
 
 export async function allWorks2() {
-
-    const works = await worksApi();
 
     for (let i = 0; i < works.length; i++) {
         recupererWorks2(works[i]);

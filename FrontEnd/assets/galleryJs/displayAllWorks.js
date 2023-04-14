@@ -7,6 +7,8 @@ async function worksApi () {
     return works;
 }
 
+export const works = await worksApi();
+
 // Fonction Recuperation d'un works[i]
 async function recupererWorks(work) {
 
@@ -74,8 +76,6 @@ function recupererWorksFromCache () {
 
 // Fonction : Affichage de tous les works
 export async function allWorks() {
-
-    const works = await worksApi();
 
     for (let i = 0; i < works.length; i++) {
 

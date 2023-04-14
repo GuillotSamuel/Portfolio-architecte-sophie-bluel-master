@@ -10,19 +10,20 @@ function modalOpening () {
 })
 }
 
+function closingModalFunction () {
+    const modalClosing = document.querySelector(".modal");
+    modalClosing.style.display = "none";
+    const overlayClosing = document.querySelector(".overlay");
+    overlayClosing.style.display = "none";
+    const modal1Container = document.querySelector(".modal-1-container");
+    const modal2Container = document.querySelector(".modal-2-container");
+    const modalSuppressionConfirmation = document.querySelector(".modal-galery-suppression")
+    modal1Container.style.display = "block";
+    modal2Container.style.display = "none";
+    modalSuppressionConfirmation.style.display = "none";
+}
+
 function modalClosing () {
-    function closingModalFunction () {
-        const modalClosing = document.querySelector(".modal");
-        modalClosing.style.display = "none";
-        const overlayClosing = document.querySelector(".overlay");
-        overlayClosing.style.display = "none";
-        const modal1Container = document.querySelector(".modal-1-container");
-        const modal2Container = document.querySelector(".modal-2-container");
-        const modalSuppressionConfirmation = document.querySelector(".modal-galery-suppression")
-        modal1Container.style.display = "block";
-        modal2Container.style.display = "none";
-        modalSuppressionConfirmation.style.display = "none";
-    }
 
     const closingModalButton = document.querySelector(".closing-modale-1");
     closingModalButton.addEventListener ("click", function () {
