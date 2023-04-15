@@ -42,38 +42,6 @@ async function recupererWorks(work) {
     titleWorks.className = "works-title";
 }
 
-// Fonction Recuperer works from cache
-function recupererWorksFromCache () {
-    const gallery = document.querySelector('.gallery');
-
-    caches.open('cacheWorks').then(cache => {
-    cache.keys().then(keys => {
-        keys.forEach(request => {
-        cache.match(request).then(response => {
-            if (response) {
-                response.json().then(data => {
-                    const pieceWorks = document.createElement('article');
-                    const image = document.createElement('img');
-                    const title = document.createElement('p');
-
-                    title.textContent = data.title;
-                    image.src = data.imageUrl;
-
-                    pieceWorks.appendChild(image);
-                    pieceWorks.appendChild(title);
-                    gallery.appendChild(pieceWorks);
-                    pieceWorks.dataset.categoryId = data.categoryId;
-                    pieceWorks.className = "works-card";
-                    image.className = "works-image";
-                    title.className = "works-title";          
-                });
-            }
-        });
-        });
-    });
-    });
-}
-
 // Fonction : Affichage de tous les works
 export async function allWorks() {
 
@@ -81,7 +49,5 @@ export async function allWorks() {
 
         recupererWorks(works[i]);
     }  
-
-    recupererWorksFromCache ();
 }
 

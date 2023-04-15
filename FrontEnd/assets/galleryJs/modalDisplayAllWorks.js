@@ -49,45 +49,11 @@ async function recupererWorks2(work) {
 
 }
 
-function recupererWorksFromCache2 () {
-    const gallery = document.querySelector('.gallery-management');
-    caches.open('cacheWorks').then(cache => {
-        cache.keys().then(keys => {
-            keys.forEach(request => {
-            cache.match(request).then(response => {
-                if (response) {
-                    response.json().then(data => {
-                        const pieceWorks2 = document.createElement('article');
-                        const imageWorks2 = document.createElement('img');
-                        const editingWorks2 = document.createElement("p");
-                        editingWorks2.innerText = "éditer";
-                        imageWorks2.src = data.imageUrl;
-                        const sectionWorks2 = document.querySelector(".gallery-management");
-                        const suppressionLogo1Work = document.createElement("i");
 
-    
-                        sectionWorks2.appendChild(pieceWorks2);
-                        pieceWorks2.appendChild(imageWorks2);
-                        pieceWorks2.appendChild(editingWorks2);
-                        pieceWorks2.appendChild(suppressionLogo1Work);
-                        pieceWorks2.className = "works-card2";
-                        imageWorks2.className = "works-image2";
-                        editingWorks2.className = "editingWorks-card2";
-                        suppressionLogo1Work.dataset.i = data.id;
-                        suppressionLogo1Work.className = "fa-solid fa-trash-can suppression-logo-1-work"    
-                    });
-                }
-            });
-            });
-        });
-        });
-}
 
 export async function allWorks2() {
 
     for (let i = 0; i < works.length; i++) {
         recupererWorks2(works[i]);
     }
-
-    recupererWorksFromCache2 ();
 }

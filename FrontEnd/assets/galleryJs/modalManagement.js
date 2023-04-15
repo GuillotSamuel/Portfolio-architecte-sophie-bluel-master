@@ -42,6 +42,11 @@ function modalClosing () {
     closingModalButton2.addEventListener ("click", function () {
         closingModalFunction ();
     })
+
+    const validationModalButton = document.querySelector(".validation-modal-2");
+    validationModalButton.addEventListener ("click", function () {
+        closingModalFunction ();
+    })
 }
 
 function modale1ToModale2 () {
