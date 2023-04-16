@@ -1,3 +1,5 @@
+import { closingModalFunction } from "./modalManagement.js";
+
 export async function deleteWork(workId) {
 
     const url = `http://localhost:5678/api/works/${workId}`;
@@ -16,4 +18,6 @@ export async function deleteWork(workId) {
         .catch(error => {
             console.error(error);
     });
+
+    closingModalFunction ();
 }

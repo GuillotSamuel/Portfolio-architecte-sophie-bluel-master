@@ -1,3 +1,9 @@
+function clearLocalStorage() {
+    sessionStorage.clear();
+}
+
+clearLocalStorage();
+
 import { allWorks } from './galleryJs/displayAllWorks.js';
 allWorks();
 

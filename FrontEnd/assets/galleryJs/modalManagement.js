@@ -10,7 +10,7 @@ function modalOpening () {
 })
 }
 
-function closingModalFunction () {
+export function closingModalFunction () {
     const modalClosing = document.querySelector(".modal");
     modalClosing.style.display = "none";
     const overlayClosing = document.querySelector(".overlay");
