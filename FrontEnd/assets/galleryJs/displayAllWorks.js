@@ -30,14 +30,18 @@ async function recupererWorks(work) {
 
     // Recuperation du categoryId du works[i]
     const categoryIdWorks = work.categoryId;
-    // Stockage du categoriiId dans pieceWorks
+    // Stockage du categoryId dans pieceWorks
     pieceWorks.dataset.categoryId = categoryIdWorks;
+
+    // Recuperation de l'ID du works
+    const worksId = work.id;
 
     // Affichage du work[i] et creation de classes
     sectionWorks.appendChild(pieceWorks);
     pieceWorks.appendChild(imageWorks);
     pieceWorks.appendChild(titleWorks);
     pieceWorks.className = "works-card";
+    pieceWorks.setAttribute("id", "gallery"+worksId);
     imageWorks.className = "works-image";
     titleWorks.className = "works-title";
 }

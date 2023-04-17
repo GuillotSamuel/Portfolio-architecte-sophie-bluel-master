@@ -122,7 +122,7 @@
 .gallery-management {
     display: flex;
     flex-wrap: wrap;
-    gap: 9px;
+    gap: 0px 9px;
     margin-bottom: 47px;
     overflow: scroll;
 	max-height: 386px;
@@ -472,3 +472,8 @@
     margin-top: 7px;
 }
 
+/* Hiding work deleted */
+
+.hidden {
+    display: none;
+}

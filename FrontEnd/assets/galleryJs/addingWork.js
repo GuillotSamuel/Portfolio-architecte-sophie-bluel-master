@@ -1,3 +1,5 @@
+import { deleteWorkManagement } from './deleteWork.js'
+
 // Fetch lors de l'affichage dans la modale d'un nouveau works pour recuperer l'id du work
 async function worksApi () {
   const reponse = await fetch("http://localhost:5678/api/works");
@@ -6,9 +8,7 @@ async function worksApi () {
 }
 
 // Affichage du work ajoute dans la modale
-async function displayFormObjectModal () {
-
-  const works = await worksApi ();
+async function displayFormObjectModal (works) {
 
   const sectionWorks = document.querySelector(".gallery-management");
   const lastKey = "formObject" + (sessionStorage.length);
@@ -26,38 +26,62 @@ async function displayFormObjectModal () {
   imageWorks.src = lastObject.image.src;
   editingWorks.innerText = "éditer";
 
-    sectionWorks.appendChild(pieceWorks);
-    pieceWorks.appendChild(imageWorks);
-    pieceWorks.appendChild(editingWorks);
-    pieceWorks.appendChild(suppressionLogo1Work);
+  sectionWorks.appendChild(pieceWorks);
+  pieceWorks.appendChild(imageWorks);
+  pieceWorks.appendChild(editingWorks);
+  pieceWorks.appendChild(suppressionLogo1Work);
 
-    pieceWorks.className = "works-card2";
-    imageWorks.className = "works-image2";
-    editingWorks.className = "editingWorks-card2";
-    suppressionLogo1Work.className = "fa-solid fa-trash-can suppression-logo-1-work";
+  pieceWorks.dataset.categoryId = works[i].categoryId;
+
+  pieceWorks.className = "works-card2";
+  pieceWorks.setAttribute("id", "modal"+worksId);
+
+  imageWorks.className = "works-image2";
+  editingWorks.className = "editingWorks-card2";
+  suppressionLogo1Work.className = "fa-solid fa-trash-can suppression-logo-1-work";
+  suppressionLogo1Work.setAttribute("id", worksId);
+
+  // Rechargement de la fonction de suppression
+  await deleteWorkManagement ();
+
 }
 
 // Affichage du work ajoute dans la gallery
-function displayFormObject () {
+function displayFormObject (works) {
   const sectionWorks = document.querySelector(".gallery");
   const lastKey = "formObject" + (sessionStorage.length);
 
   const lastObject = JSON.parse(sessionStorage.getItem(lastKey));
- 
+  const i = works.length - 1;
+
   const pieceWorks = document.createElement("article");
   const imageWorks = document.createElement("img");
   const titleWorks = document.createElement("p");
+  const worksId = works[i].id;
+  const categoryIdWorks = works.categoryId;
 
   imageWorks.src = lastObject.image.src;
   titleWorks.textContent = lastObject.title;
 
-  pieceWorks.className = "works-card";
-  imageWorks.className = "works-image";
-  titleWorks.className = "works-title"; 
-
+  sectionWorks.appendChild(pieceWorks);
   pieceWorks.appendChild(imageWorks);
   pieceWorks.appendChild(titleWorks);
-  sectionWorks.appendChild(pieceWorks);
+
+  pieceWorks.className = "works-card";
+  pieceWorks.setAttribute("id", "gallery"+worksId);
+  imageWorks.className = "works-image";
+  titleWorks.className = "works-title";
+  pieceWorks.dataset.categoryId = categoryIdWorks;
+}
+
+async function displayNewWork () {
+
+  const works = await worksApi ();
+
+  displayFormObject (works);
+
+  displayFormObjectModal (works);
+
 }
 
 function addingNewWork () {
@@ -132,9 +156,7 @@ function addingNewWork () {
 
         sessionStorage.setItem(`formObject${counter}`, JSON.stringify(formObject));
 
-        displayFormObject ();
-
-        displayFormObjectModal ();
+          displayNewWork ();
       }
     })
   })

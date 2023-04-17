@@ -1,4 +1,3 @@
-import { deleteWork } from './deleteWork.js';
 import { works } from './displayAllWorks.js';
 
 // Affichage de l'ensemble des photos enregistrees dans la modale 1
@@ -27,29 +26,18 @@ async function recupererWorks2(work) {
     // Ajout d'un attribut data-i contenant l'ID du work correspondant au click de suppression
     suppressionLogo1Work.setAttribute("data-i", worksId);
 
-    // Ajout gestionnaire d'evenement au logo de suppression
-    suppressionLogo1Work.addEventListener("click", (event) => {
-        // Récupération de la valeur de data-i
-        event.preventDefault();
-        const index = event.target.getAttribute("data-i");
-
-        // Appel de la fonction de suppression d'un work
-        deleteWork(index);
-    })
-    
     // Affichage du work[i] et creation de classes
     sectionWorks2.appendChild(pieceWorks2);
     pieceWorks2.appendChild(imageWorks2);
     pieceWorks2.appendChild(editingWorks2);
     pieceWorks2.appendChild(suppressionLogo1Work);
     pieceWorks2.className = "works-card2";
+    pieceWorks2.setAttribute("id", "modal"+worksId);
     imageWorks2.className = "works-image2";
     editingWorks2.className = "editingWorks-card2";
     suppressionLogo1Work.className = "fa-solid fa-trash-can suppression-logo-1-work";
 
 }
-
-
 
 export async function allWorks2() {
 

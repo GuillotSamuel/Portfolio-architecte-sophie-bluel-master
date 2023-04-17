@@ -13,8 +13,12 @@ filterButtonManagement ();
 import { editionModeManagement } from './galleryJs/editionMode.js';
 editionModeManagement ();
 
-import { modalManagement } from './galleryJs/modalManagement.js'
+import { modalManagement } from './galleryJs/modalManagement.js';
 modalManagement ();
 
-import { addingNewWorkManagement } from './galleryJs/addingWork.js'
+import { addingNewWorkManagement } from './galleryJs/addingWork.js';
 addingNewWorkManagement ();
+
+import { deleteWorkManagement } from './galleryJs/deleteWork.js';
+deleteWorkManagement ();
+
