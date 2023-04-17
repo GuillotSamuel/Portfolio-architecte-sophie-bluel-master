@@ -31,8 +31,6 @@ async function displayFormObjectModal (works) {
   pieceWorks.appendChild(editingWorks);
   pieceWorks.appendChild(suppressionLogo1Work);
 
-  pieceWorks.dataset.categoryId = works[i].categoryId;
-
   pieceWorks.className = "works-card2";
   pieceWorks.setAttribute("id", "modal"+worksId);
 
@@ -58,7 +56,7 @@ function displayFormObject (works) {
   const imageWorks = document.createElement("img");
   const titleWorks = document.createElement("p");
   const worksId = works[i].id;
-  const categoryIdWorks = works.categoryId;
+  const worksCategoryId = works[i].categoryId;
 
   imageWorks.src = lastObject.image.src;
   titleWorks.textContent = lastObject.title;
@@ -67,11 +65,11 @@ function displayFormObject (works) {
   pieceWorks.appendChild(imageWorks);
   pieceWorks.appendChild(titleWorks);
 
+  pieceWorks.dataset.categoryId = worksCategoryId;
   pieceWorks.className = "works-card";
   pieceWorks.setAttribute("id", "gallery"+worksId);
   imageWorks.className = "works-image";
   titleWorks.className = "works-title";
-  pieceWorks.dataset.categoryId = categoryIdWorks;
 }
 
 async function displayNewWork () {
