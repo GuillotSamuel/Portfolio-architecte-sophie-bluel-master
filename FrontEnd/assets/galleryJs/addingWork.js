@@ -82,30 +82,34 @@ async function displayNewWork () {
 
 }
 
+function checkFormValidity () {
+
+  const formButton = document.querySelector('.validation-modal-2');
+  const title = document.querySelector('.title-input-modal-2');
+  const category = document.querySelector('.category-input-modal-2');
+  const image = document.querySelector('#picture-adding');
+
+  if (!image.files[0] || !title.value || !category.value) {
+    formButton.style.backgroundColor = "#A7A7A7";
+    formButton.disabled = true;
+  } else {
+    formButton.style.backgroundColor = "#1D6154";
+    formButton.disabled = false;
+  }
+}
+
 function addingNewWork () {
 
   const form = document.querySelector('.form-modal-2');
-  const formButton = document.querySelector('.validation-modal-2');
   const title = document.querySelector('.title-input-modal-2');
   const category = document.querySelector('.category-input-modal-2');
   const image = document.querySelector('#picture-adding');
   const previewPicture = document.querySelector('#preview-picture');
   const pictureAddingContainer = document.querySelector(".adding-picture-container");
 
-  checkFormValidity ();
-
-  function checkFormValidity () {
-    if (!image.files[0] || !title.value || !category.value) {
-      formButton.style.backgroundColor = "#A7A7A7";
-    } else {
-      formButton.style.backgroundColor = "#1D6154";
-    }
-  }
-
   title.addEventListener("input", checkFormValidity);
   category.addEventListener("input", checkFormValidity);
   image.addEventListener("change", checkFormValidity);
-
 
   form.addEventListener('submit', (event) => {
     event.preventDefault(); 
@@ -202,5 +206,7 @@ export async function addingNewWorkManagement () {
   addingPhotoInput ();
 
   addingNewWork ();
+
+  checkFormValidity ();
 
 }

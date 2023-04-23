@@ -1,4 +1,3 @@
-import { closingModalFunction } from "./modalManagement.js";
 
 function hidingDeletedWorkGallery (index) {
     
@@ -36,7 +35,6 @@ async function deleteWork (workId) {
             console.error(error);
     });
 
-    closingModalFunction ();
 }
 
 export function deleteWorkManagement () {
